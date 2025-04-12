@@ -20,30 +20,34 @@ function autobind(
     target: (...args: any[]) => any,
     ctx: ClassMethodDecoratorContext
 ) {
-    ctx.addInitializer(function(this: any) {
+    ctx.addInitializer(function (this: any) {
         this[ctx.name] = this[ctx.name].bind(this);
     });
 
     return function (this: any) {
         // console.log('executing original function');
         target.apply(this);
-    }
+    };
 }
 
-function fieldLogger(target: undefined, ctx: ClassFieldDecoratorContext) {
+function replacer<T>(initValue: T) {
+    return function replacerDecorator(
+        target: undefined,
+        ctx: ClassFieldDecoratorContext
+    ) {
+        console.log(target);
+        console.log(ctx);
 
-    console.log(target)
-    console.log(ctx)
-
-    return (initialValue: any) => {
-        console.log(initialValue);
-        return '';
-    } 
+        return (initialValue: any) => {
+            console.log(initialValue);
+            return initValue;
+        };
+    };
 }
 
 @logger
 class Person {
-    @fieldLogger
+    @replacer('')
     name = "Max";
 
     @autobind
