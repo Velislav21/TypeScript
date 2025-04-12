@@ -1,10 +1,17 @@
-import express from "express";
+import express, {Request, Response, NextFunction} from "express";
+
+import todoRoutes from "./routes/todo.js";
 
 const app = express();
 
-app.get('/', (req, res) => {
-    console.log(req.method);
-    res.json({message: "it works"});
+app.use(express.json());
+
+app.use(todoRoutes);
+
+app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+    res.status(500).json({message: 'An error occured!'});
 });
 
-app.listen(3000)
+app.listen(3000, () => {
+    console.log(`http://localhost:3000`);
+});
