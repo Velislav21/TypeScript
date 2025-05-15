@@ -1,6 +1,5 @@
 function isEven(a: number, b: number, c: number): boolean {
 
-    if ((a + b + c) % 2 === 0) return true;
-    return false;
+    return (a + b + c) % 2 === 0
 }
 console.log(isEven(1,2,3))

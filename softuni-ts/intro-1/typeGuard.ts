@@ -1,23 +1,6 @@
 function guard(input: unknown): boolean {
     
-    let isValid = true;
-
-    if (Array.isArray(input)) {
-        if (input.length > 0) {
-            
-            input.forEach((el) => {
-                if (typeof el !== 'string') {
-                    isValid = false;
-                }
-            })
-        } else {
-            isValid = false;
-        }
-    } else {
-        isValid = false;
-    }
-
-    return isValid;
+    return Array.isArray(input) && input.length > 0 && input.every(el => typeof el === 'string');
 }
 console.log(guard({}))
 console.log(guard({test: "one"}))

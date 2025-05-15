@@ -1,41 +1,42 @@
 function friday(datesArr: unknown[]): unknown {
-    let result: string[] = [];
-
-    datesArr.reduce((resultArr: string[], date) => {
-        if (date instanceof Date) {
-            const dateAsString = date.toString();
-
-            if (dateAsString.includes("Fri") && dateAsString.includes("13")) {
+    return datesArr
+        .reduce((resultArr: string[], date) => {
+            if (date instanceof Date) {
                 
-                const formatedDate = new Intl.DateTimeFormat("en-GB", {
-                    day: "2-digit",
-                    month: "long",
-                    year: "numeric",
-                }).format(date);
+                const dateAsString = date.toString();
 
-                resultArr.push(formatedDate.split(' ').join('-'));
+                if (
+                    dateAsString.includes("Fri") &&
+                    dateAsString.includes("13")
+                ) {
+                    const formatedDate = new Intl.DateTimeFormat("en-GB", {
+                        day: "2-digit",
+                        month: "long",
+                        year: "numeric",
+                    }).format(date);
+
+                    resultArr.push(formatedDate.split(" ").join("-"));
+                }
             }
-        }
-        return resultArr
-    }, result);
-
-    return result.join('\n');
+            return resultArr;
+        }, []) // <-> initial resultArr value
+        .join("\n");
 }
-console.log(friday([
+console.log(
+    friday([
+        {},
 
-{},
+        new Date(2025, 4, 13),
 
-new Date(2025, 4, 13),
+        null,
 
-null,
+        new Date(2025, 5, 13),
 
-new Date(2025, 5, 13),
+        "13-09-2023",
 
-'13-09-2023',
-
-new Date(2025, 6, 13),
-
-]))
+        new Date(2025, 6, 13),
+    ])
+);
 console.log(
     friday([
         new Date(2024, 0, 13),
