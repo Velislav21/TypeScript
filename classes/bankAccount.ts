@@ -1,8 +1,8 @@
 class BankAccount {
 
-    accNumber: string;
-    accHolder: string;
-    balance: number;
+    accNumber;
+    accHolder;
+    balance;
 
     constructor(accNumber: string, accHolder: string, balance = 0) {
         this.accNumber = accNumber;
