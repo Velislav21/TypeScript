@@ -8,7 +8,7 @@ class EmailMessage extends Message {
     constructor() {
         super();
     }
-    send(): string {
+    override send(): string {
         return "Sending email...";
     }
 }
@@ -17,7 +17,7 @@ class SMSMessage extends Message {
     constructor() {
         super();
     }
-    send(): string {
+    override send(): string {
         return "Sending SMS...";
     }
 }

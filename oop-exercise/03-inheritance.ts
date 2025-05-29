@@ -17,7 +17,7 @@ class Car extends Vehicle {
         this.model = model;
     }
 
-    drive(): string {
+    override drive(): string {
         return `Driving a ${this.brand} ${this.model}`;
     }
 }
