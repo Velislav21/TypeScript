@@ -1,11 +1,11 @@
 class User2 {
-    _username;
+    private _username!: string;
 
     constructor(username: string) {
         if (username.length <= 3) {
             throw new Error("Error: Username must be at least 3 characters long")
         }
-        this._username = username;
+        this.username = username;
     }
 
     get username() {
@@ -13,7 +13,7 @@ class User2 {
     }
 
     set username(newUsername: string) {
-        if (newUsername.length <= 3) {
+        if (newUsername.length < 3) {
             throw new Error("Error: Username must be at least 3 characters long")
         }
         this._username = newUsername;

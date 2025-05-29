@@ -1,4 +1,4 @@
-class Course {
+abstract class Course {
     title;
     duration;
 
@@ -7,9 +7,7 @@ class Course {
         this.duration = duration;
     }
 
-    getDescription(): string {
-        return ``;
-    }
+    abstract getDescription(): string 
 }
 
 class ProgrammingCourse extends Course {
@@ -19,7 +17,7 @@ class ProgrammingCourse extends Course {
         super(title, duration);
         this.language = language;
     }
-    getDescription(): string {
+    override getDescription(): string {
         return `Programming Course: ${this.title} in ${this.title} - ${this.duration} hours`;
     }
 }
@@ -30,7 +28,7 @@ class DesignCourse extends Course {
         super(title, duration);
         this.tools = tools;
     }
-    getDescription(): string {
+    override getDescription(): string {
         return `Design Course: ${this.title} using ${this.tools.join(', ')} - ${this.duration} hour`
     }
 }

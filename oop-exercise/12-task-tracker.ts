@@ -1,23 +1,21 @@
 class Task2 {
     title;
     description;
-    completed;
-    #createdBy;
+    completed = false;
+    private _createdBy;
 
     constructor(
         title: string,
         description: string,
         createdBy: string,
-        completed?: boolean
     ) {
         this.title = title;
         this.description = description;
-        this.completed = completed;
-        this.#createdBy = createdBy;
+        this._createdBy = createdBy;
     }
 
     get createdBy() {
-        return this.#createdBy;
+        return this._createdBy;
     }
 
     toggleStatus(): void {

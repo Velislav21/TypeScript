@@ -1,13 +1,11 @@
-class Shape {
+abstract class Shape {
     color;
 
     constructor(color: string) {
         this.color = color;
     }
 
-    getArea(): number {
-        return 0;
-    }
+    abstract getArea(): number 
 }
 
 class Circle extends Shape {
@@ -17,7 +15,7 @@ class Circle extends Shape {
         this.radius = radius;
     }
 
-    getArea(): number {
+    override getArea(): number {
         return Math.PI * Math.pow(this.radius, 2);
     }
 }
@@ -30,7 +28,7 @@ class Rectangle extends Shape {
         this.sideB = sideB;
     }
 
-    getArea(): number {
+    override getArea(): number {
         return this.sideA * this.sideB;
     }
 }
