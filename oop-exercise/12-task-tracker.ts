@@ -28,8 +28,11 @@ class Task2 {
         }`;
     }
 
-    static createSampleTask() {
-        return [];
+    static createSampleTask(): Task2[] {
+        return [
+            new Task2('do somth', 'some description', 'me'),
+            new Task2('do somth2', 'some description2', 'me2')
+        ];
     }
 }
 const task22 = new Task2("Clean room", "Clean the room", "Mary");
