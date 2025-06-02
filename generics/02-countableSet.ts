@@ -21,7 +21,7 @@ class CountedSet<T> implements CountableSet<T> {
         const currentItem = this.items.get(item);
 
         if (currentItem && currentItem > 0) {
-            this.items.delete(item);
+            this.items.set(item, currentItem - 1);
         } else {
             return;
         }
@@ -31,13 +31,11 @@ class CountedSet<T> implements CountableSet<T> {
 
         const currentItem = this.items.get(item);
         
-        return currentItem && currentItem > 0 ? true : false;
+        return currentItem !== undefined && currentItem > 0;
     }
     getNumberOfCopies(item: T): number {
 
-        const currentItem = this.items.get(item);
-
-        return currentItem && currentItem > 0 ? currentItem : 0;
+        return this.items.get(item) ?? 0
     }
 }
 
