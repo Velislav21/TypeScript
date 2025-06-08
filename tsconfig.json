@@ -4,6 +4,8 @@
         "module": "esnext",
         "sourceMap": true,
         "strict": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
         "outDir": "dist"
     }
 }
