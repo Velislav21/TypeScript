@@ -1,8 +1,8 @@
-function log2(target: any, propertyKey: string, descriptor: PropertyDescriptor) {
+function log2(target: any, methodName: string, descriptor: PropertyDescriptor) {
     const originalFn = descriptor.value;
 
     descriptor.value = function(...args: string[]) {
-        console.log(`Function '${propertyKey}' called with arguments: ${args.join(', ')}`);
+        console.log(`Function '${methodName}' called with arguments: ${args.join(', ')}`);
         return originalFn(args);
     }
     return descriptor;
